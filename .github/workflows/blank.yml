@@ -19,7 +19,5 @@ jobs:
       with:
         image: erdem2000/mcuxpresso:latest
         options: -v ${{github.workspace}}:/app
-        run: /
-          ls -l ./Debug
     - name: list
       run: ls -l ./Debug

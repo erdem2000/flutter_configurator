@@ -1,0 +1,25 @@
+name: Releasing
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: check
+      uses: actions/checkout@v3
+    - name: docker
+      uses: addnab/docker-run-action@v3
+      with:
+        image: erdem2000/mcuxpresso:latest
+        options: -v ${{github.workspace}}:/app
+        run: /
+          ls -l ./Debug
+    - name: list
+      run: ls -l ./Debug
